@@ -1,0 +1,160 @@
+<html>
+	<head>
+	<link rel="stylesheet" href="index.css">
+	<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+	<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<title>
+
+		Jquery Game Assignment-4
+	
+	</title>
+	
+	</head>
+
+	<body>
+		<button title = "Start" id="btn">Start</button>
+		<button type = "button" onclick="location.reload()">Restart</button>
+		<button type="button" onclick="Score()">Score </button>
+		<div id="source" >
+			<p> <b> Source: </b> </p>
+			<p>Drag source elements into empty space and then drag each element into its correct element corresponding to target!</p>
+			<img src = "source_img1.jpg" id="Apple" alt="source img1"/>
+			<img src = "source_img2.jpg" id="WaterMelon" alt="source img2" />
+			<img src = "source_img3.jpg" id="Orange" alt="source img3" />
+			<img src = "source_img4.jpg" id="Kiwi" alt="source img4" />
+			<img src = "source_img5.jpg" id="Pomegranate" alt="source img5" />
+			<img src = "source_img6.jpg" id="Banana" alt="source img6" />
+	</div>
+	
+	<div id="target">
+			<p> <b> Target: </b> </p>
+			<img src = "target_img1.jpg" id="Kiwi1" alt="target img1" />
+			<img src = "target_img2.jpg" id="Banana1" alt="target img2" />
+			<img src = "target_img3.jpg" id="Apple1" alt="target img3" />
+			<img src = "target_img4.jpg" id="Pomegranate1" alt="target img4" />
+			<img src = "target_img5.jpg" id="Orange1" alt="target img5" />
+			<img src = "target_img6.jpg" id="WaterMelon1" alt="target img6" />
+	</div>    
+	<script>
+		$('#btn').click(function() {
+			$( "#Apple" ).draggable();
+				$( "#WaterMelon" ).draggable();
+				$( "#Orange" ).draggable();
+				$( "#Kiwi" ).draggable();
+				$( "#Pomegranate" ).draggable();
+				$( "#Banana" ).draggable();
+			});
+		var image = new Array ();
+		$( document ).ready(function(){
+			score = 0;
+			image[0] = "source_img1.jpg";
+			image[1] = "source_img2.jpg";
+			image[2] = "source_img3.jpg";
+			image[3] = "source_img4.jpg";
+			image[4] = "source_img5.jpg";
+			image[5] = "source_img6.jpg";
+			x = Math.floor((Math.random() * 5) + 0);
+			if(x==0){
+			$('#Apple').attr('src',image[x]);
+			$('#WaterMelon').attr('src',image[x+1]);
+			$('#Orange').attr('src',image[x+2]);
+			$('#Kiwi').attr('src',image[x-3]);
+			$('#Pomegranate').attr('src',image[x+4]);
+			$('#Banana').attr('src',image[x+5]);
+			}
+			else if(x==1){
+			$('#Apple').attr('src',image[x-1]);
+			$('#Kiwi').attr('src',image[x+2]);
+			$('#Orange').attr('src',image[x+1]);
+			$('#Pomegranate').attr('src',image[x+3]);
+			$('#Banana').attr('src',image[x+4]);
+			$('#WaterMelon').attr('src',image[x]);
+			}
+			else if(x==2){
+			$('#WaterMelon').attr('src',image[x]);
+			$('#Apple').attr('src',image[x-1]);
+			$('#Orange').attr('src',image[x+2]);
+			$('#Kiwi').attr('src',image[x+3]);
+			$('#Pomegranate').attr('src',image[x+1]);
+			$('#Banana').attr('src',image[x-2]);
+			}
+			else if(x==3){
+			$('#kiwi').attr('src',image[x]);
+			$('#Orange').attr('src',image[x-1]);
+			$('#Banana').attr('src',image[x+2]);
+			$('#Pomegranate').attr('src',image[x+1]);
+			$('#WaterMelon').attr('src',image[x-2]);
+			$('#Apple').attr('src',image[x-3]);
+			}
+			else if(x==4){
+			$('#Pomegranate').attr('src',image[x]);
+			$('#Kiwi').attr('src',image[x-1]);
+			$('#Banana').attr('src',image[x+1]);
+			$('#Orange').attr('src',image[x-2]);
+			$('#WaterMelon').attr('src',image[x-3]);
+			$('#Apple').attr('src',image[x-4]);
+			}
+			else if(x==5){
+			$('#Banana').attr('src',image[x]);
+			$('#Pomegranate').attr('src',image[x-1]);
+			$('#Kiwi').attr('src',image[x-2]);
+			$('#Orange').attr('src',image[x-3]);
+			$('#WaterMelon').attr('src',image[x-4]);
+			$('#Apple').attr('src',image[x-5]);
+			}
+					
+		});
+	
+			var score = 0;
+		$("#source").droppable( 
+			{ 
+			drop :function() 
+			{
+				if(event.target.id == "Kiwi"){	
+				score += 5;
+				alert("Fruit Matched:  " + event.target.id + " and your score is :" +score);
+				}
+				else if (event.target.id == "Banana"){
+				score += 5 ;
+				alert("Fruit Matched:  " + event.target.id + " and your score is :" +score);
+				}
+				else if(event.target.id == "Apple"){
+				score += 5 ;
+				alert("Fruit Matched:  " + event.target.id + " and your score is :" +score);
+			}
+			else if(event.target.id == "Pomegranate"){
+				score += 5 ;
+				alert("Fruit Matched:  " + event.target.id + " and your score is :" +score);
+			} 
+			else if(event.target.id == "Orange"){
+			score += 5 ;
+			alert("Fruit Matched:  " + event.target.id + " and your score is :" +score);
+			}
+			else if(event.target.id == "WaterMelon"){
+				score += 5 ;
+				alert("Fruit Matched: " + event.target.id + " and your score is :" +score);
+			}
+			} 
+		} );
+
+
+		function Score(){
+			if((score > 0)&&(score < 31))
+			alert("Your total Score is : "+ score);
+			else if(score>30){
+			score = 0;
+			alert("Wrong Fruit Dropedn Now your score is : "+ score);}
+			else 
+			alert("Your total Score is : "+ score);
+		}
+
+		</script>
+
+		<?php
+		$Score = score;
+		include(Game.php);
+		?>
+	</body>
+
+</html>
